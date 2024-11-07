@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TastySmile</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome and Enjoy ordering</h1>
+        <form id="orderform">
+            <label for="food">Choose a food</label>
+            <select id="food">
+                <option value="0">--- select food</option>
+                <option value="50">Burger - $50</option>
+                <option value="80">Pizza - $80</option>
+                <option value="30">Sandwich - $30</option>
+                <option value="100">CaseOh Size Burger - $100</option>
+            </select>
+        </form>
+    </div>
+    <div>
+        <label for="drinks">Choose A Drinks</label>
+        <select id="Drinks">
+            <option value="0">--- Select Drink</option>
+            <option value="20">ManggoSmootie - $20</option>
+            <option value="30">StarberrySmootie - $30</option>
+            <option value="10">Orange Juice - $10</option>
+            <option value="20">Cow Milk - $20</option>
+            </select>
+        </div>
+        <button type="button" id="orderButton">Order now!</button>
+        <div id="result"></div>
+        <script>
+            document.getElementById("orderButton").onclick = function() {
+               const foodPrice = parseInt(document.getElementById("food").value);
+               const DrinkPrice = parseInt(document.getElementById("Drink").value);
+
+               let totalPrice = foodPrice + DrinkPrice;
+               let discount = 0;
+
+               if (totalPrice > 100) {
+               discount = totalPrice * 0,1;
+               totalPrice -= discount; //totalPrice = totalPrice - discount
+                }
+               const resultDiv = document.getElementById("result");
+
+               if (totalPrice > 0) {
+                resultDiv.innerHTML = `
+                    Total: $${totalPrice}<br>
+                    Discount : $${discount}<br>
+                    Final Price : $${totalPrice.toFixed(2)} `;
+               } else {
+                    resultDiv.innerHTML = "Please select Food And Drink"
+               }
+            };
+        </script>
+</body>
+</html
